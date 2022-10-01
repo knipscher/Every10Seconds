@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     private bool isGameOver = false;
 
+    public int level = 1;
+
     public Action OnChangeRandomChannel;
     public Action OnChangeNextChannel;
 
@@ -44,7 +46,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(1);
             timeSinceStart++;
 
-            if (timeSinceStart % minigameLength == 0)
+            if (!isGameOver && timeSinceStart % minigameLength == 0)
             {
                 ChangeChannel();
             }

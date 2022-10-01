@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dinosaur.unity
     guid: d934583bd1f150b40b01816f176453e8
+  - enabled: 1
+    path: Assets/Scenes/Bridgerfin.unity
+    guid: b54ce49305132ca40849f7a82cc850e5
   m_configObjects: {}

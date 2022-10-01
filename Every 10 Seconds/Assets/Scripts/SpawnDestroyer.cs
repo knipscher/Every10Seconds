@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class SpawnDestroyer : MonoBehaviour
 {
+    [SerializeField]
+    private string[] spawnTags;
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out Spawn spawn))
+        foreach (var spawnTag in spawnTags)
         {
-            Destroy(spawn.gameObject);
+            if (collision.gameObject.CompareTag(spawnTag))
+            {
+                Destroy(collision.gameObject);
+            }
         }
     }
 }

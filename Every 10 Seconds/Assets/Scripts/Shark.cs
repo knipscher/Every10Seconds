@@ -4,25 +4,10 @@ using UnityEngine;
 
 public class Shark : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private bool isInWater = true;
+    protected Rigidbody rb;
 
-    private Rigidbody rb;
-
-    private void Awake()
+    protected void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        if (isInWater)
-        {
-            rb.useGravity = false;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        var horizontal = Input.GetAxis("Horizontal");
-        var vertical = Input.GetAxis("Vertical");
-        var force = new Vector3(horizontal, vertical, 0);
-        rb.AddForce(force * speed);
     }
 }

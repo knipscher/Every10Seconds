@@ -21,7 +21,7 @@ public class Fish : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.TryGetComponent(out Shark shark))
+        if (other.gameObject.TryGetComponent(out SwimmingShark shark))
         {
             GameManager.instance.Score(pointValue);
             Destroy(gameObject);

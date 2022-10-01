@@ -1,12 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    private enum Minigame { None, Fish, Dinosaur, Count }
+    private enum Minigame { None, Fish, Dinosaur, Bridgerfin, Count }
     private Dictionary<Minigame, int> timesPlayedPerMinigame = new Dictionary<Minigame, int>();
     private Minigame currentMinigame;
 
@@ -47,6 +45,7 @@ public class SceneLoader : MonoBehaviour
         minigameIndex++;
         if (minigameIndex == (int)Minigame.Count || minigameIndex == 0)
         {
+            GameManager.instance.level++; // Every time you do a full loop, increase the level
             minigameIndex = 1; // Skip the TV room... although it might be kind of fun to have a TV room in there... recursively...
         }
 
@@ -57,5 +56,10 @@ public class SceneLoader : MonoBehaviour
     {
         var minigameIndex = Mathf.RoundToInt(Random.value * (int)Minigame.Count);
         SelectMinigame(currentMinigame);
+    }
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(0);
     }
 }
