@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9c04c9a86de0c4f8ba6c2bba7ced42, type: 3}
+  m_Name: QuestionAndAnswers 3
+  m_EditorClassIdentifier: 
+  question: 'Hello again, Lord Dolphinly! I have a bit of a game for you today: tell
+    me your favorite kind of dolphin, and I''ll tell you mine!'
+  correctAnswer: Bottlenose.
+  incorrectAnswer: Nurse.
+  correctResponse: Tee hee, same! But of course, that's the kind of dolphin we are.
+    How delightful it is to be a dolphin here with you, another of the same kind
+    of dolphin!
+  wrongResponse: Nurse? Although that sounds comforting, I know for a fact that there's
+    no such thing  nurse dolphin. But there is a nurse... shark! Shark!! Guards,
+    kill this shark!
+  timeoutResponse: Why aren't you responding? And why are you looking at me like
+    I'm delicious? Wait, you're a shark! Guards! Kill this imposter!

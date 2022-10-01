@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [SerializeField] private int minigameLength;
+    public int minigameLength;
     [SerializeField] private GameObject losePanel;
 
     private bool isRandomized = false;
@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(1);
             timeSinceStart++;
+            Score(1);
 
             if (!isGameOver && timeSinceStart % minigameLength == 0)
             {

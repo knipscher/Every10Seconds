@@ -9,11 +9,11 @@ public class RunningShark : Shark
     private string obstacleTag = "Obstacle";
     private Vector3 obstacleForce;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (boxCollider.bounds.Contains(transform.position))
         {
-            transform.Translate(0, Input.GetAxis("Vertical") * Time.deltaTime * speed, 0);
+            rb.AddForce(0, Input.GetAxis("Vertical") * Time.deltaTime * speed, 0);
         }
         else if (boxCollider.bounds.min.y > transform.position.y)
         {

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9c04c9a86de0c4f8ba6c2bba7ced42, type: 3}
+  m_Name: QuestionAndAnswers 1
+  m_EditorClassIdentifier: 
+  question: Did you hear the gossip about Dolphne Bridgerfin? Apparently she was
+    seen sleeping with both her eyes closed! What do you think of that?
+  correctAnswer: What a strange way to sleep! I always sleep with one eye open.
+  incorrectAnswer: How silly! I never sleep, because I will die if I stop moving.
+  correctResponse: So true! I do the same, as do all of us dolphins. Perhaps she
+    was extra sleepy from attending fancy formal dolphin events.
+  wrongResponse: Huh? That's not a dolphin thing. In fact, that's... a shark thing!!
+    Guards, please ram this imposter to death as a group with your strong snouts!
+  timeoutResponse: Why aren't you responding? And why are you looking at me like
+    I'm delicious? Wait, you're a shark! Guards! Kill this imposter!

@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/TV Room.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Fish.unity
+    path: Assets/Scenes/All About Sharks.unity
     guid: 07dc9f8535d337e4eb22e5727eb90ec7
   - enabled: 1
-    path: Assets/Scenes/Dinosaur.unity
+    path: Assets/Scenes/Jurassic Shark.unity
     guid: d934583bd1f150b40b01816f176453e8
   - enabled: 1
     path: Assets/Scenes/Bridgerfin.unity
