@@ -6,13 +6,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    
+
+    [SerializeField] private int minigameLength;
+    [SerializeField] private GameObject losePanel;
+
     private bool isRandomized = false;
 
     private int timeSinceStart;
     private int score;
 
-    [SerializeField] private int minigameLength;
+    private bool isGameOver = false;
 
     public Action OnChangeRandomChannel;
     public Action OnChangeNextChannel;
@@ -33,8 +36,10 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator Start()
     {
+        losePanel.SetActive(false);
         ChangeChannel();
-        while (true)
+
+        while (!isGameOver)
         {
             yield return new WaitForSecondsRealtime(1);
             timeSinceStart++;
@@ -62,5 +67,11 @@ public class GameManager : MonoBehaviour
         {
             OnChangeNextChannel?.Invoke();
         }
+    }
+
+    public void LoseGame()
+    {
+        losePanel.SetActive(true);
+        isGameOver = true;
     }
 }
