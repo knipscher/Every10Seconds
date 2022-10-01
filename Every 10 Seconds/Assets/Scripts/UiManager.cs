@@ -21,8 +21,13 @@ public class UiManager : MonoBehaviour
         }
     }
 
-    public void SetScore(float score)
+    private void Start()
     {
-        scoreLabel.text = "Score: " + score.ToString();
+        GameManager.instance.OnSetScore += SetScore;
+    }
+
+    public void SetScore(int score)
+    {
+        scoreLabel.text = "Score: " + score;
     }
 }

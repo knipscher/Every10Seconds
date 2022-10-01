@@ -1,15 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private SceneLoader sceneLoader;
+    public static GameManager instance;
+    
     private bool isRandomized = false;
 
-    private float score;
+    private int timeSinceStart;
+    private int score;
 
     [SerializeField] private int minigameLength;
+
+    public Action OnChangeRandomChannel;
+    public Action OnChangeNextChannel;
+
+    public Action<int> OnSetScore;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private IEnumerator Start()
     {
@@ -17,25 +37,30 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSecondsRealtime(1);
-            score++;
-            UiManager.instance.SetScore(score);
+            timeSinceStart++;
 
-            if (score % minigameLength == 0)
+            if (timeSinceStart % minigameLength == 0)
             {
                 ChangeChannel();
             }
         }
     }
 
+    public void Score(int points)
+    {
+        score += points;
+        OnSetScore?.Invoke(score);
+    }
+
     private void ChangeChannel()
     {
         if (isRandomized)
         {
-            sceneLoader.PlayRandomMinigame();
+            OnChangeRandomChannel?.Invoke();
         }
         else
         {
-            sceneLoader.PlayNextMinigame();
+            OnChangeNextChannel?.Invoke();
         }
     }
 }

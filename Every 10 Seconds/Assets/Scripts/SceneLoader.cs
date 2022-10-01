@@ -18,6 +18,18 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        GameManager.instance.OnChangeNextChannel += PlayNextMinigame;
+        GameManager.instance.OnChangeRandomChannel += PlayRandomMinigame;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.instance.OnChangeNextChannel -= PlayNextMinigame;
+        GameManager.instance.OnChangeRandomChannel -= PlayRandomMinigame;
+    }
+
     private void SelectMinigame(Minigame minigame)
     {
         if (currentMinigame != Minigame.None)
