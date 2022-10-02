@@ -13,6 +13,8 @@ public class SceneLoader : MonoBehaviour
         Count
     }
 
+    [SerializeField] private string[] minigameInfos;
+
     private Dictionary<Minigame, int> timesPlayedPerMinigame = new Dictionary<Minigame, int>();
     private Minigame currentMinigame;
 
@@ -28,6 +30,8 @@ public class SceneLoader : MonoBehaviour
     {
         GameManager.instance.OnChangeNextChannel += PlayNextMinigame;
         GameManager.instance.OnChangeRandomChannel += PlayRandomMinigame;
+
+        UiManager.instance.SetInfoText(minigameInfos[1]);
     }
 
     private void OnDestroy()
@@ -42,6 +46,8 @@ public class SceneLoader : MonoBehaviour
         {
             SceneManager.UnloadSceneAsync((int) currentMinigame);
         }
+
+        UiManager.instance.SetInfoText(minigameInfos[(int)minigame]);
 
         currentMinigame = minigame;
         SceneManager.LoadScene((int) minigame, LoadSceneMode.Additive);
@@ -81,6 +87,7 @@ public class SceneLoader : MonoBehaviour
 
     public void ResetGame()
     {
+        Debug.LogWarning("reloading!");
         SceneManager.LoadScene(0);
     }
 }

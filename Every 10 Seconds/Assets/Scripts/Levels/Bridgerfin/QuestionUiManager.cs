@@ -80,7 +80,6 @@ public class QuestionUiManager : MonoBehaviour
     {
         hasAnswered = true;
 
-
         buttonA.gameObject.SetActive(false);
         buttonB.gameObject.SetActive(false);
 

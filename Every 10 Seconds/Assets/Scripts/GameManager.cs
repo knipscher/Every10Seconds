@@ -43,17 +43,17 @@ public class GameManager : MonoBehaviour
         bridgerfinQuestionIndex = PlayerPrefs.GetInt("QuestionIndex");
         losePanel.SetActive(false);
         ChangeChannel();
-
-
-
+        
         while (!isGameOver)
         {
             yield return new WaitForSecondsRealtime(1);
             timeSinceStart++;
+            UiManager.instance.SetCounter(minigameLength - timeSinceStart);
             Score(1);
 
             if (!isGameOver && timeSinceStart % minigameLength == 0)
             {
+                timeSinceStart = 0;
                 ChangeChannel();
             }
         }
