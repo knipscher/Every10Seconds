@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9c04c9a86de0c4f8ba6c2bba7ced42, type: 3}
+  m_Name: QuestionAndAnswers 6
+  m_EditorClassIdentifier: 
+  question: I hope this isn't too strange of a compliment, but your skin looks lovely
+    today, dear Lord Dolphinly!
+  correctAnswer: Thank you! It's soft and smooth because I am a dolphin.
+  incorrectAnswer: Thank you! It's rough like sandpaper because I am a dolphin.
+  correctResponse: Mine too! I love being soft and smooth. It makes it so much fun
+    to slide through the water!
+  wrongResponse: Wait a minute, that's what shark skin feels like! Have you been
+    a shark this whole time? Betrayal! Ignominy! Guards, please, help!
+  timeoutResponse: Why aren't you responding? And why are you looking at me like
+    I'm delicious? Wait, you're a shark! Guards! Kill this imposter!

@@ -22,17 +22,12 @@ public class QuestionUiManager : MonoBehaviour
 
     private bool hasAnswered = false;
 
-    private IEnumerator Start()
+    private void Start()
     {
         suspicionSlider.SetValueWithoutNotify(0);
         SetQuestionAndAnswers();
         
         questionTime = Mathf.Clamp(questionTime - GameManager.instance.level, GameManager.instance.minigameLength / 2, GameManager.instance.minigameLength);
-        yield return new WaitForSeconds(questionTime);
-        if (!hasAnswered)
-        {
-            TimeOut();
-        }
     }
 
     private void Update()
@@ -41,12 +36,23 @@ public class QuestionUiManager : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             suspicionSlider.SetValueWithoutNotify(elapsedTime / questionTime);
+
+            if (elapsedTime > questionTime)
+            {
+                TimeOut();
+            }
         }
     }
 
     private void SetQuestionAndAnswers()
     {
-        currentQuestionAndAnswers = questionAndAnswerAtlas.GetQuestionAndAnswersByLevel(GameManager.instance.level - 1);
+        if (GameManager.instance.bridgerfinQuestionIndex >= questionAndAnswerAtlas.questionsAndAnswers.Length)
+        {
+            GameManager.instance.ResetQuestionIndex();
+        }
+
+        currentQuestionAndAnswers = questionAndAnswerAtlas.GetQuestionAndAnswers(GameManager.instance.bridgerfinQuestionIndex);
+
         question.text = currentQuestionAndAnswers.question;
         var random = Random.value;
         if (random > 0.5f)
@@ -77,6 +83,18 @@ public class QuestionUiManager : MonoBehaviour
         question.text = currentQuestionAndAnswers.correctResponse;
 
         GameManager.instance.Score(Mathf.RoundToInt(questionTime - elapsedTime) + 1);
+        GameManager.instance.IncrementQuestionIndex();
+
+        StartCoroutine(WaitThenAskNextQuestion());
+    }
+
+    private IEnumerator WaitThenAskNextQuestion()
+    {
+        yield return new WaitForSeconds(2.5f);
+        elapsedTime = 0;
+        hasAnswered = false;
+        ResetButtons();
+        SetQuestionAndAnswers();
     }
 
     private void IncorrectAnswer()
@@ -89,6 +107,7 @@ public class QuestionUiManager : MonoBehaviour
         question.text = currentQuestionAndAnswers.wrongResponse;
 
         GameManager.instance.LoseGame();
+        GameManager.instance.IncrementQuestionIndex();
     }
 
     private void TimeOut()
@@ -99,5 +118,14 @@ public class QuestionUiManager : MonoBehaviour
         question.text = currentQuestionAndAnswers.timeoutResponse;
 
         GameManager.instance.LoseGame();
+        GameManager.instance.ResetQuestionIndex();
+    }
+
+    public void ResetButtons()
+    {
+        buttonA.gameObject.SetActive(true);
+        buttonB.gameObject.SetActive(true);
+        buttonA.onClick.RemoveAllListeners();
+        buttonB.onClick.RemoveAllListeners();
     }
 }

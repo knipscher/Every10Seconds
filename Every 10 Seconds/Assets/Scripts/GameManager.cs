@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     public Action<int> OnSetScore;
 
+    public int bridgerfinQuestionIndex { get; private set; } = 0;
+
     private void Awake()
     {
         if (instance == null)
@@ -38,8 +40,11 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator Start()
     {
+        bridgerfinQuestionIndex = PlayerPrefs.GetInt("QuestionIndex");
         losePanel.SetActive(false);
         ChangeChannel();
+
+
 
         while (!isGameOver)
         {
@@ -62,7 +67,9 @@ public class GameManager : MonoBehaviour
 
     private void ChangeChannel()
     {
-        if (isRandomized)
+        OnChangeNextChannel?.Invoke();
+        /*
+        if (level > 1)
         {
             OnChangeRandomChannel?.Invoke();
         }
@@ -70,11 +77,25 @@ public class GameManager : MonoBehaviour
         {
             OnChangeNextChannel?.Invoke();
         }
+        */
     }
 
     public void LoseGame()
     {
+        Debug.LogWarning("lost game!");
         losePanel.SetActive(true);
         isGameOver = true;
+    }
+
+    public void IncrementQuestionIndex()
+    {
+        bridgerfinQuestionIndex++;
+        PlayerPrefs.SetInt("QuestionIndex", bridgerfinQuestionIndex);
+    }
+
+    public void ResetQuestionIndex()
+    {
+        bridgerfinQuestionIndex = 0;
+        PlayerPrefs.SetInt("QuestionIndex", bridgerfinQuestionIndex);
     }
 }

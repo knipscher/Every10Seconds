@@ -8,7 +8,7 @@ public class QuestionAndAnswerAtlas : ScriptableObject
 {
     public QuestionAndAnswers[] questionsAndAnswers;
 
-    public QuestionAndAnswers GetQuestionAndAnswersByLevel(int level)
+    public QuestionAndAnswers GetQuestionAndAnswers(int level)
     {
         if (level < questionsAndAnswers.Length)
         {

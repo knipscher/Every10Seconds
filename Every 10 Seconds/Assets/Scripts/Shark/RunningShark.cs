@@ -13,7 +13,7 @@ public class RunningShark : Shark
     {
         if (boxCollider.bounds.Contains(transform.position))
         {
-            rb.AddForce(0, Input.GetAxis("Vertical") * Time.deltaTime * speed, 0);
+            rb.AddForce(Input.GetAxis("Horizontal") * Time.deltaTime * speed, Input.GetAxis("Vertical") * Time.deltaTime * speed, 0);
         }
         else if (boxCollider.bounds.min.y > transform.position.y)
         {

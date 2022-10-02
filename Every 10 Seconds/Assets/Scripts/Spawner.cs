@@ -34,6 +34,7 @@ public class Spawner : MonoBehaviour
 
             var spawn = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
             spawn.transform.SetParent(transform);
+            spawn.transform.position = new Vector3(spawn.transform.position.x, spawn.transform.position.y, transform.position.z);
         }
     }
 }
