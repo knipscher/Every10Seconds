@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e9c04c9a86de0c4f8ba6c2bba7ced42, type: 3}
   m_Name: QuestionAndAnswers 0
   m_EditorClassIdentifier: 
-  question: Good day! From your attire, you must be the youngest son of the renowned
-    Dolphinly family. I'm Lady Delfina Dolphinington. Tell me, what are your two
-    favorite dolphin activities? Mine are echolocation and disliking sharks.
+  question: Good day! From your attire, you must be the youngest son of the Dolphinly
+    family. I'm Lady Dolphinington. What are your favorite dolphin activities? Mine
+    are echolocation and disliking sharks.
   correctAnswer: I love doing cool flips and hanging out with my pod!
   incorrectAnswer: I have eaten over one hundred baby seals.
   correctResponse: Oh ho hoo! I too love doing cool flips and hanging out with my

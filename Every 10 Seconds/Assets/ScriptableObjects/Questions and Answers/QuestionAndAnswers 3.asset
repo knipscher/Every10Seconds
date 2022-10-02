@@ -17,8 +17,7 @@ MonoBehaviour:
   correctAnswer: Bottlenose.
   incorrectAnswer: Nurse.
   correctResponse: Tee hee, same! But of course, that's the kind of dolphin we are.
-    How delightful it is to be a dolphin here with you, another of the same kind
-    of dolphin!
+    How delightful it is to be a dolphin here with another of the same kind of dolphin!
   wrongResponse: Nurse? Although that sounds comforting, I know for a fact that there's
     no such thing  nurse dolphin. But there is a nurse... shark! Shark!! Guards,
     kill this shark!
