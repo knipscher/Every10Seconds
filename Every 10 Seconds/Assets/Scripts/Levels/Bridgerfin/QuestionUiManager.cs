@@ -12,6 +12,8 @@ public class QuestionUiManager : MonoBehaviour
     [SerializeField] private Button buttonA;
     [SerializeField] private Button buttonB;
 
+    [SerializeField] private TextMeshProUGUI scoreText;
+
     [SerializeField] private QuestionAndAnswerAtlas questionAndAnswerAtlas;
     private QuestionAndAnswers currentQuestionAndAnswers;
 
@@ -24,6 +26,7 @@ public class QuestionUiManager : MonoBehaviour
 
     private void Start()
     {
+        scoreText.gameObject.SetActive(false);
         suspicionSlider.SetValueWithoutNotify(0);
         SetQuestionAndAnswers();
         
@@ -77,12 +80,16 @@ public class QuestionUiManager : MonoBehaviour
     {
         hasAnswered = true;
 
+
         buttonA.gameObject.SetActive(false);
         buttonB.gameObject.SetActive(false);
 
         question.text = currentQuestionAndAnswers.correctResponse;
 
-        GameManager.instance.Score(Mathf.RoundToInt(questionTime - elapsedTime) + 1);
+        var questionScore = Mathf.RoundToInt(questionTime - elapsedTime) + 1;
+        GameManager.instance.Score(questionScore);
+        scoreText.gameObject.SetActive(true);
+        scoreText.text = "+" + questionScore;
         GameManager.instance.IncrementQuestionIndex();
 
         StartCoroutine(WaitThenAskNextQuestion());
